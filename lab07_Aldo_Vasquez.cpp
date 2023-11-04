@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<int> simularTorneo(vector<int> habilidades, int N, int K) {
+vector<int> Torneo(vector<int> habilidades, int N, int K) {
     int tam = habilidades.size();
 
     queue<int> torneoQueue;
