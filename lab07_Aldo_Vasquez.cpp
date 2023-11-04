@@ -21,20 +21,28 @@ vector<int> Torneo(vector<int> habilidades, int N, int K) {
     vector<int> resultado(2);
     
     while (K > 0) {
-        if (jugador1 > jugador2) {
-            rondasGanadas++;
-            resultado = {jugador2, jugador1};
-            torneoQueue.push(jugador2);
-        } else {
-            rondasGanadas = 1;
-            resultado = {jugador1, jugador2};
-            torneoQueue.push(jugador1);
-            jugador1 = jugador2;
-        }
-        
-        K--;
+    if (jugador1 > jugador2) {
+        rondasGanadas++;
+        resultado = {jugador2, jugador1};
+        torneoQueue.push(jugador2);
+    } else {
+        rondasGanadas = 1;
+        resultado = {jugador1, jugador2};
+        torneoQueue.push(jugador1);
+        jugador1 = jugador2;
     }
-
+    
+    if (rondasGanadas == N) {
+        torneoQueue.push(jugador1);
+        jugador1 = torneoQueue.front();
+        torneoQueue.pop();
+        rondasGanadas = 0;
+    }
+    jugador2 = torneoQueue.front();
+    torneoQueue.pop();
+    
+    K--;
+}
 
     return habilidades;
 }
