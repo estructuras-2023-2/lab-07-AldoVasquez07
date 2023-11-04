@@ -19,6 +19,22 @@ vector<int> Torneo(vector<int> habilidades, int N, int K) {
     int jugador2 = habilidades[1];
 
     vector<int> resultado(2);
+    
+    while (K > 0) {
+        if (jugador1 > jugador2) {
+            rondasGanadas++;
+            resultado = {jugador2, jugador1};
+            torneoQueue.push(jugador2);
+        } else {
+            rondasGanadas = 1;
+            resultado = {jugador1, jugador2};
+            torneoQueue.push(jugador1);
+            jugador1 = jugador2;
+        }
+        
+        K--;
+    }
+
 
     return habilidades;
 }
